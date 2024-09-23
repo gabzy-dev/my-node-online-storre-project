@@ -2,23 +2,17 @@
 const express = require("express");
 const bodyParser = require('body-parser');
 const app = express();
+const adminRoute = require('./Routes/data');
+const shopRoute = require('./Routes/shop');
 
 app.use(bodyParser.urlencoded({extended: false}));
 
-app.use("/add-item",(req,res,next)=> {//allows request to move into the next middleware.
-  //next should be called if we dont send a response.
-  res.send("<form action ='product' method ='POST'><input type='text' name='title'/><button type='submit'>submit</button> </form>");
+app.use(adminRoute);
+app.use(shopRoute);
 
-});
-
-app.post("/product",(req,res,next)=> {
- res.redirect("/");
- console.log(req.body);
+app.use((req,res,next)=> {
+  res.status(404).send("<h1> 404 page not founf")
 })
+;
 
-app.use('/',(req,res,next)=> {
-
-  res.send("<h1>this is the homepage</h1>");
-})
-
-app.listen(3001);
+app.listen(3000); 
