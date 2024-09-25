@@ -1,13 +1,17 @@
 const express = require('express');
 const router = express.Router();
+const path = require("path");
 
-router.get("/add-item",(req,res,next)=> {//allows request to move into the next middleware.
+
+router.get("/add-product",(req,res,next)=> {//allows request to move into the next middleware.
     //next should be called if we dont send a response.
-    res.send("<form action ='product' method ='POST'><input type='text' name='title'/><button type='submit'>submit</button> </form>");
+    res.sendFile(path.join(__dirname, "../","Views","Add-product.html"));
   
   });
+
+
   
-  router.post("/product",(req,res,next)=> {
+  router.post("/add-product",(req,res,next)=> {
    res.redirect("/");
    console.log(req.body);
   })
