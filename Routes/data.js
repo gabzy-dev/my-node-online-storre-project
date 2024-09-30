@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const path = require("path");
 const rootDir = require('../Util/Path');
-
+const products = [];
 
 router.get("/add-product",(req,res,next)=> {//allows request to move into the next middleware.
     //next should be called if we dont send a response.
@@ -14,10 +14,13 @@ router.get("/add-product",(req,res,next)=> {//allows request to move into the ne
   
   router.post("/add-product",(req,res,next)=> {
    res.redirect("/");
-   console.log(req.body);
+   products.push({title: req.body.title});
   })
   
 
+  exports.routes = router;
+  exports.products = products;
 
 
-module.exports = router;
+
+// module.exports = router;
