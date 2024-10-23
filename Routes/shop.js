@@ -6,8 +6,8 @@ const adminData = require("./data");
 
 
 router.get('/',(req,res,next)=> {
-  console.log(adminData.products);
-    res.sendFile( path.join( rootDir,'Views',"Shop.html") );
+  const products = adminData.products;
+    res.render('Shop',{prods:products, docTitle: 'Shop'});
   })
 
 

@@ -13,10 +13,10 @@ app.use('/admin',adminData.routes);
 app.use(shopRoute);
 
 app.set('view engine','pug');
-app.set('Views', 'Views');
+app.set('Views','Views');
 
 app.use((req,res,next)=> {
-  res.status(404).sendFile((path.join(__dirname,"/","Views","Error.html" )));
+  res.status(404).render('404');
 });
 
 app.listen(3000); 
