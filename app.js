@@ -12,11 +12,11 @@ app.use(express.static(path.join(__dirname,'Public')))
 app.use('/admin',adminData.routes);
 app.use(shopRoute);
 
-app.set('view engine','pug');
+app.set('view engine','ejs');
 app.set('Views','Views');
 
 app.use((req,res,next)=> {
-  res.status(404).render('404');
+  res.status(404).render('404',{pageTitle:"Error Page."});
 });
 
 app.listen(3000); 
