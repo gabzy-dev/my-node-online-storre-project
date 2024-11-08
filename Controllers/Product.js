@@ -3,7 +3,7 @@ const Product = require('../Models/product')
 
    exports.getAddProduct = (req,res,next)=> {//allows request to move into the next middleware.
     //next should be called if we dont send a response.
-    res.render('add-product',{pageTitle: "Add-product page",path: "/admin/add-product"})
+    res.render('admin/add-product',{pageTitle: "Add-product page",path: "/admin/add-product"})
   }
     exports.postAddProduct = (req,res,next)=> {
       const product = new Product(req.body.title)
@@ -14,7 +14,7 @@ const Product = require('../Models/product')
    exports.getShop = (req,res,next)=> {
     // const products = adminData.products;
     Product.fetchAll((products)=>{
-   res.render('shop',{prods:products, pageTitle:'Shop',path: "/"});
+   res.render('shop/product-list',{prods:products, pageTitle:'Shop',path: "/"});
     })
      
     }
