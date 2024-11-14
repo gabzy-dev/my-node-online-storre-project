@@ -3,7 +3,7 @@ const path = require('path');
 
 const p = path.join(path.dirname(require.main.filename),'data','products.json');
 
-const getProductFromFile =cb=>{
+const getProductFromFile = cb =>{
       fs.readFile(p,(err,fileContent)=>{
         if(err){
           return  cb([])
@@ -15,8 +15,11 @@ const getProductFromFile =cb=>{
 }
 
 module.exports = class Product {
-    constructor(t){
-        this.title = t;
+    constructor(title,imageUrl,price,description){
+        this.title = title;
+        this.image = imageUrl;
+        this.price = price;
+        this.description = description;
     }
     
     save(){

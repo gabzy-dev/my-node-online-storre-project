@@ -5,13 +5,14 @@ const app = express();
 const adminRoutes = require('./Routes/data');
 const shopRoute = require('./Routes/shop');
 const path = require("path");
-const errorPage = require("./Controllers/Product")
+const errorPage = require("./Controllers/shop")
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname,'Public')))
 
 app.use('/admin',adminRoutes);
 app.use(shopRoute);
+
 
 app.set('view engine','ejs');
 app.set('Views','Views');
